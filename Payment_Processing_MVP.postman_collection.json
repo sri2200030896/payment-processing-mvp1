@@ -1,0 +1,194 @@
+{
+  "info": {
+    "name": "Payment Processing MVP API",
+    "description": "Collection for testing Payment Processing MVP endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Process Payment - Success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"contact\": \"9876543210\",\n  \"amount\": 1500.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/payment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "payment"]
+        }
+      }
+    },
+    {
+      "name": "Process Payment - Invalid Name (Too Short)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jo\",\n  \"email\": \"john@example.com\",\n  \"contact\": \"9876543210\",\n  \"amount\": 1500.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/payment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "payment"]
+        }
+      }
+    },
+    {
+      "name": "Process Payment - Invalid Email",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"invalid-email\",\n  \"contact\": \"9876543210\",\n  \"amount\": 1500.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/payment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "payment"]
+        }
+      }
+    },
+    {
+      "name": "Process Payment - Invalid Contact (Not 10 digits)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"contact\": \"123\",\n  \"amount\": 1500.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/payment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "payment"]
+        }
+      }
+    },
+    {
+      "name": "Process Payment - Invalid Amount",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"contact\": \"9876543210\",\n  \"amount\": 0.50\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/payment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "payment"]
+        }
+      }
+    },
+    {
+      "name": "Get All Payments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/payments",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "payments"]
+        }
+      }
+    },
+    {
+      "name": "Get Payment by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/payments/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "payments", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get Payments by Status - Success",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/payments/status/success",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "payments", "status", "success"]
+        }
+      }
+    },
+    {
+      "name": "Get Payments by Status - Pending",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/payments/status/pending",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "payments", "status", "pending"]
+        }
+      }
+    }
+  ]
+}
