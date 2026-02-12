@@ -1,5 +1,5 @@
-# Use official Maven image as builder
-FROM maven:3.8.4-openjdk-17 AS builder
+# Use official Maven image as builder with Java 22
+FROM maven:3.9-eclipse-temurin-22 AS builder
 
 WORKDIR /app
 
@@ -13,8 +13,8 @@ COPY src ./src
 # Build application
 RUN mvn clean package -DskipTests
 
-# Use official Java runtime as base image
-FROM openjdk:17-jdk-slim
+# Use official Java runtime as base image with Java 22
+FROM eclipse-temurin:22-jdk-slim
 
 WORKDIR /app
 
